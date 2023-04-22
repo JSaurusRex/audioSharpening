@@ -20,21 +20,23 @@ int main(int argc, char* argv[])
         return 0;
     }
 
+    SetTraceLogLevel(99);
+
     float strength = atof(argv[1]);
 
     Wave audio = LoadWave(argv[2]);
 
-    WaveFormat(&audio, 44100, 32, 1);
+    WaveFormat(&audio, 48000, 32, 2);
 
     Wave newAudio = WaveCopy(audio);
 
     int errorAmount = 0;
 
-    for(int i = 1; i < audio.frameCount; i++)
+    for(int i = 2; i < audio.frameCount; i++)
     {
         // printf("%i\n", ((ufloat*)audio.data)[i]);
         float point = ((float*)audio.data)[i];
-        float lastPoint = ((float*)audio.data)[i-1];
+        float lastPoint = ((float*)audio.data)[i-2];
 
         float difference = point - lastPoint;
         float originalDiff = difference;
@@ -44,8 +46,8 @@ int main(int argc, char* argv[])
         float newPoint = difference + lastPoint;
 
         float error = fabsf((float)difference/(float)originalDiff);
-        // if(i % 44100 == 0)
-        // if(i > 44100*10 && i < 44100*11)
+        // if(i % 48000 == 0)
+        // if(i > 48000*10 && i < 48000*11)
         // // if(abs(originalDiff-difference) > 110000000)
         // // if(abs(originalDiff-difference) > 100000000)
         // // printf("error %f\n", error);
@@ -74,9 +76,9 @@ int main(int argc, char* argv[])
         ((float*)newAudio.data)[i] = newPoint;
     }
 
-    printf("error amount %ld\t%f\%\n", errorAmount, errorAmount / (float)audio.frameCount * 100);
+    // printf("error amount %ld\t%f\%\n", errorAmount, errorAmount / (float)audio.frameCount * 100);
 
-    WaveFormat(&newAudio, 44100, 16, 1);
+    // WaveFormat(&newAudio, 48000, 32, 2);
 
     ExportWave(newAudio, argv[3]);
 }
