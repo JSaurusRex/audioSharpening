@@ -45,18 +45,18 @@ int main(int argc, char* argv[])
 
         float error = fabsf((float)difference/(float)originalDiff);
         // if(i % 44100 == 0)
-        if(i > 44100*10 && i < 44100*11)
-        // if(abs(originalDiff-difference) > 110000000)
-        // if(abs(originalDiff-difference) > 100000000)
-        // printf("error %f\n", error);
-        // if(error > 0.08 && abs(originalDiff-difference) > 5)
-        // if(abs(originalDiff-difference) > 100000000)
-        // if(abs(originalDiff-difference) > 10000)
-        {
-            printf("previous %f point %f  estimated: %f\tdifference %f modified: %f\terror: %f\n", lastPoint, point, newPoint, originalDiff, difference, error);
-            // difference = originalDiff;
-            // errorAmount++;
-        }
+        // if(i > 44100*10 && i < 44100*11)
+        // // if(abs(originalDiff-difference) > 110000000)
+        // // if(abs(originalDiff-difference) > 100000000)
+        // // printf("error %f\n", error);
+        // // if(error > 0.08 && abs(originalDiff-difference) > 5)
+        // // if(abs(originalDiff-difference) > 100000000)
+        // // if(abs(originalDiff-difference) > 10000)
+        // {
+        //     printf("previous %f point %f  estimated: %f\tdifference %f modified: %f\terror: %f\n", lastPoint, point, newPoint, originalDiff, difference, error);
+        //     // difference = originalDiff;
+        //     // errorAmount++;
+        // }
 
         newPoint = difference + lastPoint;
 
