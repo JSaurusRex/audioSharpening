@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.ipp": "c",
+        "atomic": "c",
+        "*.tcc": "c",
+        "chrono": "c",
+        "cstdint": "c",
+        "random": "c",
+        "stop_token": "c",
+        "charconv": "c",
+        "*.inc": "c"
+    }
+}
